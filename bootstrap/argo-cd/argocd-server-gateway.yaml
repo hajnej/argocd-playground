@@ -7,9 +7,11 @@ spec:
     istio: ingressgateway # use istio default controller
   servers:
   - port:
-      number: 80
-      name: http
-      protocol: HTTP
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: PASSTHROUGH
     hosts:
     - "argocd.127.0.0.1.nip.io"
 ---
@@ -27,4 +29,4 @@ spec:
     - destination:
         host: argocd-server
         port:
-          number: 80
+          number: 443
